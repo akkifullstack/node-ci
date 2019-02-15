@@ -54,7 +54,8 @@ class CustomPage {
           method: "GET",
           credentials: 'same-origin',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           }
         }).then(res => res.json())
       }, path
@@ -62,17 +63,17 @@ class CustomPage {
   }
   async post(path, title, content) {
     return this.page.evaluate(
-      (_path) => {
+      (_path, _title, _content) => {
         return fetch(_path, {
           method: "POST",
           credentials: 'same-origin',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
+          body: {
             title: _title,
             content: _content
-          })
+          }
         }).then(res => res.json())
       }, path, title, content
     )
