@@ -52,7 +52,10 @@ class CustomPage {
           _path
         }, {
           method: "GET",
-          credentials: 'same-origin'
+          credentials: 'same-origin',
+          headers: {
+            'Accept': 'application/json'
+          }
         }).then(res => res.json())
       }, path
     )
