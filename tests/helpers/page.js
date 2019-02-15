@@ -63,7 +63,7 @@ class CustomPage {
   async post(path, title, content) {
     return this.page.evaluate(
       () => {
-        return fetch(_path, {
+        return fetch(path, {
           method: "POST",
           credentials: 'same-origin',
           headers: {
