@@ -48,15 +48,14 @@ class CustomPage {
   async get(path) {
     return this.page.evaluate(
       (_path) => {
-        return fetch({
-          _path
-        }, {
-          method: "GET",
-          credentials: 'same-origin',
-          headers: {
-            'Accept': 'application/json'
-          }
-        }).then(res => res.json())
+        return fetch(
+          _path, {
+            method: "GET",
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
       }, path
     )
   }
